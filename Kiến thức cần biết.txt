@@ -1,0 +1,49 @@
+Todo list
+
+node -v : Kiểm tra node JS
+npm -v : Kiểm tra npm
+& "C:\Program Files\PostgreSQL\18\bin\psql.exe" --version -> chưa có, tải về 
+
+
+**Migration lịch sử các lần thay đổi database, là cách quản lý thay đổi database theo từng phiên bản.
+            Ví dụ team có 3 người:
+                - Mày tạo bảng todos
+                - Tao thêm cột deadline
+                - Người khác thêm cột priority
+            Nếu không có migration, mỗi người phải nhớ tự chạy SQL trên máy mình. Rất dễ quên hoặc tạo sai.
+            Nếu có migration, ai clone project về chỉ cần chạy:
+                npx prisma migrate dev
+            Prisma sẽ đọc lịch sử:
+                001 tạo bảng todos
+                002 thêm deadline
+                003 thêm priority
+            rồi tự làm database giống y chang.
+
+**Code-first: viết cấu trúc database bằng code trước, rồi công cụ tự tạo database/table theo code đó.
+        Code-first:
+            schema.prisma -> database
+        Database-first:
+            database -> schema.prisma
+
+**Prisma là một thư viện giúp Node.js làm việc với database dễ hơn.
+        Định nghĩa bảng bằng code
+        Tạo migration : npx prisma migrate dev
+        Query database
+
+**Prisma Schema là file mô tả database bằng Prisma.
+        Phần 1: datasource :Database nằm ở đâu? DATABASE_URL="postgresql://USERNAME:PASSWORD@HOST:PORT/DATABASE"
+                            Database loại gì?
+        Phần 2: generator
+                            Prisma sẽ sinh ra công cụ gì cho backend dùng?
+                            provider = "prisma-client-js" nghĩa là:
+                            Sinh Prisma Client cho JavaScript/Node.js.
+        Phần 3: model
+                            Database có bảng nào?
+                            Bảng đó có cột nào?
+        datasource nói: dùng PostgreSQL ở database todo_app
+        generator nói: tạo Prisma Client cho backend Node.js
+        model nói: có bảng Todo gồm id, title, completed, createdAt
+    
+
+
+ 

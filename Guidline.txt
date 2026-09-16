@@ -1,0 +1,84 @@
+Todo list
+
+check:
+    node -version
+    npm -version
+    & "C:\Program Files\PostgreSQL\18\bin\psql.exe" --version
+    docker --version
+    er-compose --version
+
+
+1. Tạo folder backend -> cd backend
+    npm init -y (tạo file package.json - file mô tả project Node.js)
+
+2: Cài dependencies
+    npm install express cors dotenv prisma@5 @prisma/client@5
+        express: web framework
+        cors: cho phép frontend gọi API
+        dotenv: đọc biến môi trường
+        prisma@5: database ORM (phiên bản 5, ổn định)
+        @prisma/client@5: client để query database 
+    
+3: Tạo file .env trong backend 
+        PORT=3000
+        DATABASE_URL="postgresql://postgres:postgres@localhost:5432/todo_app"
+        NODE_ENV=development
+4: Tạo file index.js - Express server
+
+5. Setup Prisma
+        mkdir prisma
+        tạo file shcema.prisma 
+            datasource db {
+                provider = "postgresql"
+                url      = env("DATABASE_URL")
+            }
+
+            generator client {
+                provider = "prisma-client-js"
+            }
+
+7. Thêm model Todo vào schema.prisma
+8. Chạy migration để tạo bảng
+        npx prisma migrate dev --name init
+
+9. Tạo cấu trúc folder src/
+        mkdir src
+        mkdir src\routes
+        mkdir src\controllers
+        mkdir src\models
+   Ý nghĩa: Tạo folder src/ để organize code khi scale lớn
+
+10. Tạo file src/models/todoModel.js
+    - Hàm getAllTodos(): lấy tất cả todo
+    - Hàm createTodo(title): tạo todo mới
+    - Hàm updateTodo(id, data): cập nhật todo
+    - Hàm deleteTodo(id): xóa todo
+    Ý nghĩa: Layer model - tương tác trực tiếp với database
+
+11. Tạo file src/controllers/todoController.js
+    - Hàm getAllTodos(req, res): gọi model, trả response
+    - Hàm createTodo(req, res): gọi model, trả response
+    - Hàm updateTodo(req, res): gọi model, trả response
+    - Hàm deleteTodo(req, res): gọi model, trả response
+    Ý nghĩa: Layer controller - xử lý request, response
+
+12. Tạo file src/routes/todoRoutes.js
+    - Định nghĩa route GET /todos -> getAllTodos
+    - Định nghĩa route POST /todos -> createTodo
+    - Định nghĩa route PUT /todos/:id -> updateTodo
+    - Định nghĩa route DELETE /todos/:id -> deleteTodo
+    Ý nghĩa: Layer routes - định nghĩa các endpoint API
+
+13. Refactor index.js
+    - Import routes từ src/routes/todoRoutes.js
+    - app.use('/api', todoRoutes)
+    Ý nghĩa: index.js chỉ là entry point, routes import từ src/
+
+14. Test API
+    node index.js
+    Chạy các endpoint test
+        $headers = @{"Content-Type" = "application/json"}
+        $body = '{"title":"Learn Node.js"}'
+
+
+Xem database : npx prisma studio
