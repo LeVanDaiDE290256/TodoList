@@ -18,7 +18,13 @@ const prisma = new PrismaClient();                   // Tạo instance Prisma
 //   { id: 1, title: 'Learn Node.js', completed: false, createdAt: ..., updatedAt: ... },
 //   { id: 2, title: 'Learn React', completed: false, createdAt: ..., updatedAt: ... }
 // ]
-const getAllTodos = async () => {
+const getAllTodos = async (filter) => {
+  if (filter === 'active') {
+    return await prisma.todo.findMany({ where: { completed: false } });
+  } else if (filter === 'completed') {
+    return await prisma.todo.findMany({ where: { completed: true } });
+  }
+  // Default: lấy tất cả
   return await prisma.todo.findMany();              // findMany(): query tất cả
 };
 

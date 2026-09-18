@@ -23,7 +23,8 @@ const todoModel = require('../models/todoModel');    // Import hàm query từ m
 //   500 Error - { error: 'message' }
 const getAllTodos = async (req, res) => {
   try {
-    const todos = await todoModel.getAllTodos();   // Gọi model lấy data
+    const filter = req.query.filter;
+    const todos = await todoModel.getAllTodos(filter);   // Gọi model lấy data
     res.json(todos);                                // Trả về JSON
   } catch (error) {
     res.status(500).json({ error: error.message }); // Lỗi -> status 500
