@@ -1,0 +1,37 @@
+Bạn không làm giùm tôi,
+hướng dẫn, đưa câu lệnh cho tôi làm từng bước, 
+khi nào xong bước đấy tôi confirm ok thì qua bước khác, 
+tiến độ hiện tại bắt đầu làm frontend
+không tự ý fix lỗi cho Tao
+giúp tao đọc log lỗi và hướng dẫn tao sửa
+
+
+
+
+Tiến độ:
+✅ Thêm todo
+✅ Xóa todo
+✅ Check completed
+✅ Filter (Tất cả / Đang làm / Hoàn thành)
+Backend:
+
+✅ Express server + Prisma ORM
+✅ CRUD endpoints (GET, POST, PUT, DELETE)
+✅ Filter API (?filter=active/completed)
+Frontend:
+
+✅ React + Vite
+✅ Thêm/xóa/edit todo
+✅ Check completed
+✅ Filter (Tất cả / Đang làm / Hoàn thành)
+✅ Search todos theo tiêu đề
+✅ Clear completed todos
+✅ Todo counter
+✅ UI minimal, formal
+Giao diện:
+
+✅ Input + nút Thêm
+✅ Search bar
+✅ Filter buttons
+✅ Todo list (checkbox + text + xóa)
+✅ CSS: formal, clean, dark theme

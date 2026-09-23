@@ -44,6 +44,8 @@ npm -v : Kiểm tra npm
         generator nói: tạo Prisma Client cho backend Node.js
         model nói: có bảng Todo gồm id, title, completed, createdAt
     
+Axios là thư viện JS để gọi API từ frontend
+        giúp frontend gọi tới backend để lấy/gửi dữ liệu
 
-
+ 
  

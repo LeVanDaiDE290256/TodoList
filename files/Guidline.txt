@@ -79,6 +79,32 @@ check:
     Chạy các endpoint test
         $headers = @{"Content-Type" = "application/json"}
         $body = '{"title":"Learn Node.js"}'
+        Invoke-WebRequest -Uri "http://localhost:3000/api/todos" -Method POST -Headers $headers -Body $body -UseBasicParsing
+
 
 
 Xem database : npx prisma studio
+
+git 
+    git init    :tạo git
+    git status  : check trạng thái
+    git add .  : thêm tất cả file vào git
+    git reset   : bỏ chọn tất cả file
+    
+    echo node_modules/ > .gitignore
+    echo .env >> .gitignore
+    echo .DS_Store >> .gitignore
+    echo prisma/migrations/ >> .gitignore
+    echo *.log >> .gitignore
+
+
+    FRONTEND:
+    1. tạo folder frontend và template
+        npm create vite@latest frontend -- --template react
+    2. cài Axios
+        npm install Axios
+    3. tạo api.js để gom API backend lại dễ bảo trì
+            tạo Todolist\frontend\src\api.js
+    4. App.jsx : component chính, gọi các hàm từ api.js
+    5. App.css : styling
+    6 chạy frontend : npm run dev 

@@ -1,4 +1,0 @@
-Bạn không làm giùm tôi,
-hướng dẫn, đưa câu lệnh cho tôi làm từng bước, 
-khi nào xong bước đấy tôi confirm ok thì qua bước khác, 
-tiến độ hiện tại là vào luôn bước 1
